@@ -1,0 +1,10 @@
+    {
+    "database": {
+        "engine": "mysql",
+        "host": "dbnpm",
+        "name": "NPMDB",
+        "user": "YOURUSERNAME",
+        "password": "YOURSQLPASSWORD",
+        "port": 3306
+    }
+    }
