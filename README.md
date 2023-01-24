@@ -14,7 +14,24 @@ This tutorial assumes that you already have Docker and Portainer installed, Over
 
 ## Installation
 
-Once you’re logged in via SSH, create a folder called nginx and a new file called docker-compose.yml
+Once you’re logged in via SSH, create a folder called nginx and a new file called config.json
+
+```bash
+    {
+    "database": {
+        "engine": "mysql",
+        "host": "dbnpm",
+        "name": "NPMDB",
+        "user": "YOURUSERNAME",
+        "password": "YOURSQLPASSWORD",
+        "port": 3306
+    }
+    }
+```
+- Save and close the file.
+
+
+- Create a new file called docker-compose.yml
 
 ```bash
     version: "3"
