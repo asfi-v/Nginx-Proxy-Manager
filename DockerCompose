@@ -1,0 +1,28 @@
+    version: "3"
+        services:
+        app:
+            image: jc21/nginx-proxy-manager:latest
+            container_name: nginx-proxy-manager
+            volumes:
+            - ./config.json:/app/config/production.json
+            - ./data:/data
+            - ./letsencrypt:/etc/letsencrypt
+            depends_on:
+            - dbnpm
+            ports:
+            - 80:80
+            - 443:443
+            - 81:81
+            restart: unless-stopped
+        dbnpm:
+            image: jc21/mariadb-aria:10.4
+            restart: unless-stopped
+            environment:
+            MYSQL_ROOT_PASSWORD: "YOURPASSWORD"
+            MYSQL_DATABASE: "NPMDB"
+            MYSQL_USER: "YOURUSERNAME"
+            MYSQL_PASSWORD: "YOURSQLPASSWORD"
+            volumes:    
+            - npm/AppData/Config/NPMDB:/var/lib/mysql #Change 'npm' to your external drive volume if available
+            expose:
+            - "3306"
